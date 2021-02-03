@@ -1,58 +1,71 @@
-body {
-  overflow-x: hidden;
-}
-
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 90%;
-}
-.centerpage {
-  width: 78vw;
+.homeimage{
+  background-image: url("../images/home.png");
+  background-repeat: no-repeat;
+  background-size: 72vw 67vh;
+  width: 45vw;
+  height: 35vh;
+  border: 2px solid #ccc;
+  background-color: ivory;
+  border-radius: 9px;
+  width: 55vw;
+  padding: 8%;
+  text-align: center;
   margin: auto;
+  margin-top: 7%;
+  height: 34vh;
+  border-radius: 2rem;
+  z-index: 2;
+  backdrop-filter: blur(2rem);  
 }
-.flex1 {
-  display: flex;
-  padding: 10px;
-  justify-content: space-between;
-  align-items: center;
-}
-.title {
-  font-size: 29px;
-  font-family: Georgia, "Times New Roman", Times, serif;
-}
-.firstdiv {
-  height: 90vh;
-  align-items: center;
-}
-.image1 {
-  width: 100vw;
 
-  background-position: center;
+.topright{
+  position: absolute;
+  top: 10%;
+  right: 12%;
 }
-.homepagetext {
-  font-size: 20px;
-  text-align: right;
+.bottomright {
+  position: absolute;
+  bottom: 12%;
+  right: 12%;
+  
 }
-.mediumsize {
-  font-size: 16px;
+.loginbtn{
+border-radius: 5px;
+border-width: 0px;
+padding: 5px 10px 8px 10px;
+width: 8vw;
+height: 5vh;
+background: linear-gradient(to right, #45a1bb, #c950c1);
+margin: 15px;
 }
-h3 {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+
+.signupbtn{
+  border-radius: 5px;
+  border-width: 0px;
+  padding: 5px 10px 8px 10px;
+  width: 8vw;
+  height: 5vh;
+  background: linear-gradient(to right, #45a1bb, #c950c1);
+  margin: 15px;
 }
-.homebutton {
-  text-decoration: none;
-  color: rgb(98, 98, 218);
+
+
+@media(max-width:900px){
+.homeimage{
+  height: 60vh;
+  width: 80vw;
+  background-size: 100vw 75vh;
+
 }
-.homepara {
-  font-size: 19px;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+
+.topright{
+  top: 13%;
+  right: 12%;
 }
-.homebutton:hover {
-  color: palevioletred;
-  font-size: 22px;
+.bottomright {
+  bottom: 8%;
+  right: 6%;
+  
 }
-.firstbutton {
-  width: 100px;
+
 }

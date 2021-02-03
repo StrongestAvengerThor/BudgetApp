@@ -1,9 +1,15 @@
-{% load static %}
-<link rel="stylesheet" type="text/CSS" href="{%static 'tracker/style.css' %}" />
-<body>
+<!DOCTYPE html>
+<html>
+<head>
+  {% load static %}
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/CSS" href="{%static 'tracker/style.css' %}" />
+</head>
 
-{% block nav %}
-<div class="navbar">
+<body>
+  {% block nav %}
   {% if user.is_authenticated %}
   <a href="{% url 'logout' %}">Logout</a>
 
@@ -11,28 +17,17 @@
   
 
   {%endif%}
-</div>
-
-
 {% endblock %}
-<br />
 {% block content %}
-<div class="image1">
-<div class="centerpage">
-
-  <h1></h1>
-  <div class="firstdiv">
+  
     {% if user.is_authenticated %}
 
     <h3 class="title">Hello there! 
-      <br/>
+      
       Welcome {{user.username}}...</h3>
-<br/>
-{% if havedetails %}
-    <div class="flex1">
-      <div>
 
-        {% if haveday %}
+{% if havedetails %}
+    {% if haveday %}
           <h3>Today's Spendings....</h3>
           <p class="mediumsize">
             The total Amount spent: {{daysum}}
@@ -46,8 +41,6 @@
           Number of days Spent: {{count}}
         </p>
 
-      </div>
-      <div>
         <h3>Display according..</h3>
         <form method="POST">
           {%csrf_token%}
@@ -66,10 +59,7 @@
           <input type="date" id="day" name="day"  />
           <button type="submit" name="view" value="day" class="firstbutton">View Day</button>
         </form>
-      </div>
-    </div>
-      <br />
-  <br/>
+      
       <p class="homepagetext">Add Expenditure
         <a href="{% url 'spend' %}" class="homebutton">
           Here
@@ -78,13 +68,9 @@
       Or check all <a href="{% url 'viewspends' %}" class="homebutton">Expenditures</a> 
       <br/>
       Or check your recent Spendings...</p>
-  </div>
-</div>
-</div>
     <br />
     
-    <div class="table-responsive container">
-      <table class="table-striped">
+    <table class="table-striped">
         <tr>
           {% for head in header %}
           <th>{{head}}</th>
@@ -107,13 +93,11 @@
         </tr>
         {% endfor %}
       </table>
-    </div>
     <br />
 
     <br />
     <br />
     <h5>Category Based:</h5>
-    <div class="table-responsive container">
       {% for category,table in categorised.items %}
 
       <table class="table-striped">
@@ -137,8 +121,7 @@
       </table>
 
       {% endfor %}
-    </div>
-    <div class="table-responsive container">
+    
       <table class="table-striped">
         {% for data,value in eachsum.items %}
         <tr>
@@ -147,7 +130,7 @@
         </tr>
         {% endfor %}
       </table>
-    </div>
+    
 
     <img src="{% static 'images/pie.png' %}" class="center" />
     <br />
@@ -169,24 +152,28 @@
   
   {% endif %}
   {% else %}
+  <div class="homeimage" style="font-family: 'Quicksand', sans-serif;">
   <br/>
   {% if showguest %}
-<h3 class="title">{{showmsg}}</h3>
+<h3>{{showmsg}}</h3>
   {% else %}
-  <h3 class="title">Hello there! 
+  <h3 class="topright">Hello there! 
     <br/>Welcome, Guest...</h3>
+  
   {% endif %}
   
     <br/>
     <br/>
-    <p class="homepagetext">To Manage Spendings Again 
-    <a href="{%url 'login' %}" class="homebutton">Login</a>
+    <p class="bottomright">To Manage Spendings 
+    <a  href="{%url 'login' %}"  style="color: aliceblue;   text-decoration: none;" class="loginbtn">Login <i class="fa fa-sign-in" ></i></a>
   <br/>
+<br>
   New Here? Let's 
-  <a href="{% url 'register'%}" class="homebutton">Sign up</a></p>
-  {%endif%}
+  <a href="{% url 'register'%}" style="color: aliceblue;   text-decoration: none;" class="signupbtn">Sign up</a></p>
 </div>
+  {%endif%}
 
 
 {% endblock %}
 </body>
+</html>
